@@ -155,7 +155,9 @@ The file is located in **app/assets/app-config.js** and is copied to **public/as
 You have access to all global methods and variables as identified in `main.js` in this file. This means that libraries such as jQuery, lodash, moment, etc can be used when needed.
 
 ####A Simple Example:
-```app-config.js
+
+```
+// app-config.js
 function appConfig() {
   var apiBase = 'api';
   return {
