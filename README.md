@@ -4,8 +4,9 @@
 `$ git clone https://github.com/hyfn/toyota-mirai-admin.git`
 
 ### Install Dependencies
-`$ npm install`
-`$ bower install`
+
+    $ npm install
+    $ bower install
 
 ### Run the build system
 `$ gulp`
