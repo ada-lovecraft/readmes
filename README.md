@@ -158,71 +158,72 @@ You have access to all global methods and variables as identified in `main.js` i
 
 ```
 // app-config.js
-function appConfig() {
-  var apiBase = 'api';
-  return {
-    environment: 'development',
-    apiBase: apiBase,
-    views: {
-      requests: {
-        customerAction: {
-          route: '/customer-details-business-partner.html',
-          queryParams:[
-            { parameter: 'id', property: 'customerID' }
-          ]
-        },
-        table: {
-          endpoint: 'order-requests',
-          searchFields: [
-            {field: 'firstName', label: 'First Name' },
-          ],
-          columns: [ {
-            title: 'Survey Date',
-            data: 'surveyDate',
-            className: 'text-center small',
-            render: function(data, type, full, meta) {
-              return moment(data).format('MM.DD.YYYY hh:mm A');
-            }
-          }]
-        },
-        tasks: [
-            {
-              title: 'Score Qualitative Answers',
-              id: 'score-qualitative-answers',
-              filter: {
-                status: ['Business Partner Review'],
-                salesArea: ['California']
-              }, 
-              roles: ['Business Partner']
-            }
-        ],
-      },
-      customerDetails: {
-        calculateTotalScore: function(quantScore, qualScore) {
-          switch(qualScore) {
-            case 'LOW':
-              return 10;
-            case 'MEDIUM':
-              return 30;
-            case 'HIGH':
-              return 50;
-          }
-        }
-      }
-    },
-    mocks: [
-      {
-        endpoint: path.join(apiBase,'*'),
-        type: 'POST',
-        dataset: 'empty',
-        responseTime:  1500,
-        mockResponse: function(request, mockData) {
-          return {status: 200, data:mockData};
-        }
-      },
-    ],
-  };
-}
+
+ function appConfig() {
+   var apiBase = 'api';
+   return {
+     environment: 'development',
+     apiBase: apiBase,
+     views: {
+       requests: {
+         customerAction: {
+           route: '/customer-details-business-partner.html',
+           queryParams:[
+             { parameter: 'id', property: 'customerID' }
+           ]
+         },
+         table: {
+           endpoint: 'order-requests',
+           searchFields: [
+             {field: 'firstName', label: 'First Name' },
+           ],
+           columns: [ {
+             title: 'Survey Date',
+             data: 'surveyDate',
+             className: 'text-center small',
+             render: function(data, type, full, meta) {
+               return moment(data).format('MM.DD.YYYY hh:mm A');
+             }
+           }]
+         },
+         tasks: [
+             {
+               title: 'Score Qualitative Answers',
+               id: 'score-qualitative-answers',
+               filter: {
+                 status: ['Business Partner Review'],
+                 salesArea: ['California']
+               }, 
+               roles: ['Business Partner']
+             }
+         ],
+       },
+       customerDetails: {
+         calculateTotalScore: function(quantScore, qualScore) {
+           switch(qualScore) {
+             case 'LOW':
+               return 10;
+             case 'MEDIUM':
+               return 30;
+             case 'HIGH':
+               return 50;
+           }
+         }
+       }
+     },
+     mocks: [
+       {
+         endpoint: path.join(apiBase,'*'),
+         type: 'POST',
+         dataset: 'empty',
+         responseTime:  1500,
+         mockResponse: function(request, mockData) {
+           return {status: 200, data:mockData};
+         }
+       },
+     ],
+   };
+ }
 ```
 
 ### Properties & Methods
